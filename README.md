@@ -1,7 +1,7 @@
-# UniLook
-This project demonstrates a web-based real-time object detection application using Flask, OpenCV, and YOLOv5. The system captures live video from a webcam, detects objects in real-time using YOLOv5, and provides auditory feedback for detected objects using the SpeechSynthesis API.
+# Uni-Speak
+This project demonstrates a web-based real-time object detection application using Flask, OpenCV, and YOLOv5. The system captures live video from a webcam, detects objects in real time using YOLOv5, and provides auditory feedback for detected objects using the SpeechSynthesis API.
 # Features
-Real-Time Object Detection: Captures live video from the webcam and detects objects in real-time using YOLOv5.
+Real-Time Object Detection: Captures live video from the webcam and detects objects in real time using YOLOv5.
 
 Web Interface: Provides a user-friendly web interface to view the live video feed and detected objects.
 
@@ -40,6 +40,6 @@ JavaScript: Manages user interactions and updates the UI.
 # Example
 Live Video Feed: Shows real-time webcam video.
 
-Object Detection: Highlights and names detected objects.
+Object Detection: Highlights and names of detected objects.
 
 Auditory Feedback: Speaks the names of detected objects
