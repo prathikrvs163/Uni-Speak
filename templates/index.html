@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Object Detection with TTS</title>
+</head>
+<body>
+    <h1>Live Object Detection with TTS</h1>
+    <img id="videoFeed" src="{{ url_for('video_feed') }}" style="width: 640px; height: 480px;" />
+    <button onclick="captureAndRecognizeText()">Recognize Text</button>
+    <p id="ocrResult"></p>
+
+    <script>
+        function speak(text) {
+            const speechSynthesis = window.speechSynthesis;
+            if (speechSynthesis.speaking) {
+                console.error('speechSynthesis.speaking');
+                return;
+            }
+            const utterThis = new SpeechSynthesisUtterance(text);
+            utterThis.onend = function (event) {
+                console.log('SpeechSynthesisUtterance.onend');
+            };
+            utterThis.onerror = function (event) {
+                console.error('SpeechSynthesisUtterance.onerror');
+            };
+            speechSynthesis.speak(utterThis);
+        }
+
+        function captureAndRecognizeText() {
+            fetch('/detect', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    const detectedObjects = data.detected_objects;
+                    if (detectedObjects.length > 0) {
+                        const text = detectedObjects.join(', ');
+                        document.getElementById('ocrResult').innerText = text;
+                        speak(text);
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
