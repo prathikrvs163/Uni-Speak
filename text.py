@@ -7,7 +7,7 @@ import pygame
 import os
 
 # Read image
-image_path = r"C:\Users\SRIRAM PRATHIK\OneDrive\Desktop\test.jpg"  # Use raw string for Windows file path
+image_path = r"image/path"  # Use raw string for Windows file path
 img = cv2.imread(image_path)
 
 # Instance text detector
